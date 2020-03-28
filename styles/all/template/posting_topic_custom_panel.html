@@ -1,0 +1,12 @@
+<div class="panel pg3 panel-container" id="giphy_phpbb-panel">
+    <div class="inner">
+        <fieldset class="fields1">
+            {{ lang('PHPBB_SEARCH') }} {{ lang('COLON')}}
+            <input type="text" id="giphy_search" name="giphy_search"></textarea>
+            <div class="giphy_results fields1" id="giphy_results" style="overflow-y: scroll;">
+                <!-- images... -->
+            </div>
+        </fieldset>
+    </div>
+</div>
+{% INCLUDEJS '@andreask_giphyforphpbb/searchgiphy.js' %}

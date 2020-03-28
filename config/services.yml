@@ -1,0 +1,5 @@
+services:
+    andreask.giphyforphpbb.listener:
+        class: andreask\giphyforphpbb\event\main_listener
+        tags:
+            - { name: event.listener }
