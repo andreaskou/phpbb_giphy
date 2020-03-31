@@ -10,20 +10,27 @@ $(document).ready(function(){
 
     // Init a timeout variable to be used below
     let timeout = null;
+
     // Listen for keystroke events
     let input;
     input = document.querySelector("#giphy_search");
 
+
+    var old = null;
     let url;
-    input.addEventListener('keyup', function (e) {
+    input.addEventListener('keydown', function (e) {
         // Clear the timeout if it has already been set.
         // This will prevent the previous task from executing
         // if it has been less than <MILLISECONDS>
         clearTimeout(timeout);
 
+        if (e.keyCode == '13')
+        {
+            e.preventDefault();
+        }
+
         // Make a new timeout set to go off in 1000ms (1 second)
         timeout = setTimeout(function () {
-
             // Trim for white spaces
             let currentTextTrimed = input.value.trim();
             // Split to array to it can be manipulated better
@@ -34,11 +41,11 @@ $(document).ready(function(){
             });
             // Conver array to string joining it with +
             currentTextTrimed = currentTextTrimed.join("+");
-
-            if (currentTextTrimed != (undefined || null || ''))
+            if (currentTextTrimed != (undefined || null || '') && (old != currentTextTrimed))
             {
                 url = `${route}&limit=5&q=${currentTextTrimed}`
                 fetchImages(url)
+                old = currentTextTrimed;
             }
         }, 1000);
     });
@@ -56,7 +63,6 @@ $(document).ready(function(){
                 img.setAttribute("id", images.data[i].id);
                 img.setAttribute("class", "giphy_image");
                 img.onclick = function (){
-                    // console.log(this.id);
                     let attach = fetchImages(this.id, true);
                     console.log("returned : ", attach);
                 };;
