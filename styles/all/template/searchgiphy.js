@@ -15,9 +15,9 @@ $(document).ready(function(){
     let input;
     input = document.querySelector("#giphy_search");
 
-
     var old = null;
     let url;
+
     input.addEventListener('keydown', function (e) {
         // Clear the timeout if it has already been set.
         // This will prevent the previous task from executing
@@ -31,19 +31,23 @@ $(document).ready(function(){
 
         // Make a new timeout set to go off in 1000ms (1 second)
         timeout = setTimeout(function () {
+
             // Trim for white spaces
             let currentTextTrimed = input.value.trim();
+
             // Split to array to it can be manipulated better
             currentTextTrimed = currentTextTrimed.split(' ');
+
             // remove empty arrays if exist
             currentTextTrimed = currentTextTrimed.filter(function(x){
                 return (x !== (undefined || null || ''));
             });
-            // Conver array to string joining it with +
+
+            // Convert array to string joining it with +
             currentTextTrimed = currentTextTrimed.join("+");
             if (currentTextTrimed != (undefined || null || '') && (old != currentTextTrimed))
             {
-                url = `${route}&limit=5&q=${currentTextTrimed}`
+                url = `${route}&limit=10&q=${currentTextTrimed}`
                 fetchImages(url)
                 old = currentTextTrimed;
             }
@@ -52,9 +56,20 @@ $(document).ready(function(){
 
     function renderImg(images)
     {
-        var i;
-        document.getElementById("giphy_results").innerHTML ="";
-        for (i = 0; i < images.data.length; i++)
+        var wrapperDivWidth = document.getElementById("giphy_wrapper").offsetWidth;
+        console.log(wrapperDivWidth);
+        var giphyResultsDiv = document.getElementById("giphy_results");
+        if (giphyResultsDiv.hasChildNodes())
+        {
+            alert('I have child(s)');
+        }
+        else {
+            alert('I am not a parrent yet!');
+        }
+        giphyResultsDiv.innerHTML = "";
+        // document.getElementById("giphy_results").innerHTML ="";
+
+        for (var i = 0; i < images.data.length; i++)
         {
             if (images.meta.status == 200)
             {   var img = document.createElement("img");
@@ -64,19 +79,6 @@ $(document).ready(function(){
                 img.setAttribute("class", "giphy_image");
                 img.onclick = function (){
                     let attach = fetchImages(this.id, true);
-                    console.log("returned : ", attach);
-                };;
-
-                // img.setAttribute("onmouseover", "giphy_original_size(this)");
-                // img.setAttribute("style", "white-space: nowrap");
-                var id = document.getElementsByClassName("giphy_images");
-                var c;
-                for (c = 0; c < id.length; c++)
-                {
-                    if (id[c].id == images.data[i].id)
-                    {
-                        continue;
-                    }
                 }
                 document.getElementById("giphy_results").appendChild(img);
             }
@@ -88,21 +90,17 @@ $(document).ready(function(){
         if (id)
         {
             query = `https://api.giphy.com/v1/gifs/${query}?api_key=${apiKey}`;
-            // url = `${route}?id=${url}`
         }
 
         fetch(query)
         .then( response => response.json() )
         .then( content => {
             if (id) {
-                // console.log("fetchImages : ", content);
-                // var test = $('#textarea').innerHTML = id;
-                // $("textarea").innerHTML = content.data.images.original.url;
                 insert_text('[img]' + content.data.images.original.url + '[/img]');
-                // return content.data.images.original.url;
             }
             else {
                 renderImg(content);
+                console.log(content);
             }
         })
         .catch(err=>{
@@ -110,23 +108,21 @@ $(document).ready(function(){
         });
     }
 
-    // });
-
-
-    let hover = document.getElementsByClassName("giphy_image");
-    // console.log(hover);
-    if(hover)
-    {
-        // hover.addEventListener("onclick", function(event)
-        // {
-        //     alert("shit");
-        // });
-    }
-
     function giphy_original_size(img_id)
     {
         alert(img_id);
         fetchImages(img_id, true);
     }
+
+    // let hover = document.getElementsByClassName("giphy_image");
+    // // console.log(hover);
+    // if(hover)
+    // {
+    //     // hover.addEventListener("onclick", function(event)
+    //     // {
+    //     //     alert("shit");
+    //     // });
+    // }
+
 
 });

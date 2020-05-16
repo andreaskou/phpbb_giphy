@@ -1,10 +1,12 @@
 <div class="panel pg3 panel-container" id="giphy_phpbb-panel">
     <div class="inner">
         <fieldset class="fields1">
-            {{ lang('PHPBB_SEARCH') }} {{ lang('COLON')}}
+            {{ lang('PHPBB_SEARCH_GIPHY') }} {{ lang('COLON')}}
             <input id="giphy_search" name="giphy_search" />
-            <div class="giphy_results fields1" id="giphy_results" style="overflow-y: scroll;">
+            <div class="giphy_wrapper" id="giphy_wrapper" style="overflow-x: scorll;">
+                <div class="giphy_results fields1" id="giphy_results" style="width: 1300 px, border = 3px, height = 10px;">
                 <!-- images... -->
+                </div>
             </div>
         </fieldset>
     </div>
