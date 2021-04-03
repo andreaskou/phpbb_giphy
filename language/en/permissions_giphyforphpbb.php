@@ -46,7 +46,5 @@ if (empty($lang) || !is_array($lang))
 */
 
 $lang = array_merge($lang, array(
-	'ACL_A_NEW_ANDREASK_GIPHYFORPHPBB'	=> 'Can use this Giphy for PHPBB admin feature',
-	'ACL_M_NEW_ANDREASK_GIPHYFORPHPBB'	=> 'Can use this Giphy for PHPBB moderator feature',
-	'ACL_U_NEW_ANDREASK_GIPHYFORPHPBB'	=> 'Can use this Giphy for PHPBB user feature',
+	'ACL_U_NEW_ANDREASK_GIPHYFORPHPBB'	=> 'Can use Giphy for PHPBB feature',
 ));
