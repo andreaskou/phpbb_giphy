@@ -1,0 +1,19 @@
+<!-- INCLUDE overall_header.html -->
+
+<h1>{L_SETTINGS}</h1>
+
+<form method="post" if="acp_board" action="{U_ACTION}">
+    <fieldset>
+        <dl>
+            <dt><label for="andreask_giphyforphpbb_dev_code">{L_GIPHYFORPHPBB_DEV_CODE}</label></dt>
+            <dd><input type="text" class="text" value="<!-- IF GIPHYFORPHPBB_DEV_CODE --> { GIPHYFORPHPBB_DEV_CODE } <!-- ENDIF -->"/></dd>
+        </dl>
+    </fieldset>
+    <fieldset>
+	    <p class="submit_buttons">
+	    <input class="button1" type="submit" id="save_settings" name="submit" value="{L_SUBMIT}" autofocus />&nbsp;
+	    <input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" autofocus />
+	    </p>
+	    {S_FORM_TOKEN}
+    </fieldset>
+</form>
