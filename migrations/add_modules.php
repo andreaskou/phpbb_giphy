@@ -16,7 +16,7 @@ class add_modules extends \phpbb\db\migration\migration
     public function update_data()
     {
         return [
-            // ['config.add', ['andreask_giphyforphpbb_dev_code', 0]],
+            ['config_text.add', ['andreask_giphyforphpbb_dev_key', 0]],
 
             ['module.add', [
                 'acp',

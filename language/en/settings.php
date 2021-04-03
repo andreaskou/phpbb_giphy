@@ -23,6 +23,8 @@ if (empty( $lang) || !is_array($lang) )
 
 $lang = array_merge(
 	$lang, array(
-		'ANDREASK_GIPHYFORPHPBB_SETTINGS'		=>	'Settings',
-		'GIPHYFORPHPBB_DEV_CODE'			=>	'Giphy API Code',
+		'ANDREASK_GIPHYFORPHPBB_SETTINGS'             =>	'Settings',
+		'GIPHYFORPHPBB_DEV_KEY'                      =>    'Giphy API Code',
+        'ANDREASK_GIPHYFORPHPBB_DEV_KEY_EXPLAIN'     =>    'Put here the Key that is given by the Giphy development website.<br>You can create this key following the <a href="https://developers.giphy.com/docs/api#quick-start-guide" target="parent" rel="noreferrer noopener">Giphy documentation</a>: "Apply for an API Key(s)"',
+        'PUT_GIPHY_API_KEY_HERE'                    =>  'Giphy API Key goes here!',
 	));

@@ -1,19 +1,20 @@
 <!-- INCLUDE overall_header.html -->
 
-<h1>{L_SETTINGS}</h1>
+<h1>{{lang('SETTINGS')}}</h1>
 
 <form method="post" if="acp_board" action="{U_ACTION}">
     <fieldset>
         <dl>
-            <dt><label for="andreask_giphyforphpbb_dev_code">{L_GIPHYFORPHPBB_DEV_CODE}</label></dt>
-            <dd><input type="text" class="text" value="<!-- IF GIPHYFORPHPBB_DEV_CODE --> { GIPHYFORPHPBB_DEV_CODE } <!-- ENDIF -->"/></dd>
+            <dt><label for="andreask_giphyforphpbb_dev_key">{{ lang('GIPHYFORPHPBB_DEV_KEY') }} {{ lang('COLON')}}</label><br/><span>{{lang('ANDREASK_GIPHYFORPHPBB_DEV_KEY_EXPLAIN')}}</span></dt>
+            <dd><input type="text" name="andreask_giphyforphpbb_dev_key" id="andreask_giphyforphpbb_dev_key" placeholder="<!-- IF GIPHYFORPHPBB_DEV_KEY -->{GIPHYFORPHPBB_DEV_KEY}<!-- ELSE -->{{lang('PUT_GIPHY_API_KEY_HERE')}}<!-- ENDIF -->" value="{GIPHYFORPHPBB_DEV_KEY}" /></dd>
         </dl>
     </fieldset>
     <fieldset>
-	    <p class="submit_buttons">
-	    <input class="button1" type="submit" id="save_settings" name="submit" value="{L_SUBMIT}" autofocus />&nbsp;
-	    <input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" autofocus />
+	    <p class="submit-buttons">
+	    <input class="button1" type="submit" id="save_settings" name="submit" value="{{lang('SUBMIT')}}" autofocus />&nbsp;
+	    <input class="button2" type="reset" id="reset" name="reset" value="{{lang('RESET')}}" autofocus />
 	    </p>
 	    {S_FORM_TOKEN}
     </fieldset>
 </form>
+<!-- INCLUDE overall_footer.html -->
