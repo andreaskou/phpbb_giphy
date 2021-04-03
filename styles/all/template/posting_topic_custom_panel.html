@@ -1,11 +1,15 @@
-<div class="panel pg3 panel-container" id="giphy_phpbb-panel">
+<div class="panel pg3 panel-container giphy_pannel" id="giphy_phpbb-panel">
     <div class="inner">
         <fieldset class="fields1">
             {{ lang('PHPBB_SEARCH_GIPHY') }} {{ lang('COLON')}}
             <input id="giphy_search" name="giphy_search" />
-            <div class="giphy_wrapper" id="giphy_wrapper" style="overflow-x: scorll;">
-                <div class="giphy_results fields1" id="giphy_results" style="width: 1300 px, border = 3px, height = 10px;">
-                <!-- images... -->
+            <div class="giphy_app" id="giphy_wrapper">
+                <div class="giphy_results hs full" id="giphy_results" data-text="Enter text here">
+                    <div class="giphy_placeholder" id="giphy_placeholder">Type something in the search box to bring some results</div>
+                </div>
+                <div id="giphy_btn_wrapper" class="giphy_btn_wrapper panel bg2 inner">
+                    <div class="giphy_prv_btn button1" id="giphy_previous_btn" style="display: none;">Previous</div>
+                    <div class="giphy_nxt_btn button2" id="giphy_next_btn" style="display: none;">Next</div>
                 </div>
             </div>
         </fieldset>
