@@ -20,10 +20,30 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  */
 class main_listener implements EventSubscriberInterface
 {
+	/** @var \phpbb\config\db_text */
+	protected $config_text;
+	/** @var \phpbb\template\template */
+	protected $template;
+	/** @var \phpbb\language */
+	protected $language;
+
+	/**
+	 * Constructor
+	 * @param phpbbconfigdb_text    $config_text [big text config object]
+	 * @param phpbbtemplatetemplate $template    [templates object]
+	 * @param phpbblanguage         $language    [language object]
+	 */
+	public function __construct(\phpbb\config\db_text $config_text, \phpbb\template\template $template, \phpbb\language\language $language)
+	{
+		$this->config_text = $config_text;
+		$this->template = $template;
+		$this->language = $language;
+	}
 	public static function getSubscribedEvents()
 	{
 		return array(
-			'core.permissions'	=> 'add_permissions',
+			'core.permissions'					=> 'add_permissions',
+			'core.posting_modify_template_vars'	=>	'say_hello',
 		);
 	}
 
@@ -51,5 +71,11 @@ class main_listener implements EventSubscriberInterface
 		$permissions['u_new_andreask_giphyforphpbb'] = array('lang' => 'ACL_U_NEW_ANDREASK_GIPHYFORPHPBB', 'cat' => 'post');
 
 		$event['permissions'] = $permissions;
+	}
+
+	public function say_hello($event)
+	{
+		$this->language->add_lang('searchgiphy', 'andreask/giphyforphpbb');
+        $this->template->assign_var('ANDREASK_GIPHYFORPHPBB_DEV_KEY', $this->config_text->get('andreask_giphyforphpbb_dev_key'));
 	}
 }

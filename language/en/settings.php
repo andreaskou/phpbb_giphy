@@ -27,4 +27,5 @@ $lang = array_merge(
 		'GIPHYFORPHPBB_DEV_KEY'                      =>    'Giphy API Code',
         'ANDREASK_GIPHYFORPHPBB_DEV_KEY_EXPLAIN'     =>    'Put here the Key that is given by the Giphy development website.<br>You can create this key following the <a href="https://developers.giphy.com/docs/api#quick-start-guide" target="parent" rel="noreferrer noopener">Giphy documentation</a>: "Apply for an API Key(s)"',
         'PUT_GIPHY_API_KEY_HERE'                    =>  'Giphy API Key goes here!',
+        'EMPTY_INPUT_NOT_ALLOWED'                   =>  'Empty submition, <strong>nothing</strong> was saved.',
 	));

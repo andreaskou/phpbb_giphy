@@ -28,12 +28,13 @@ class main_module
             {
                 trigger_error('FORM_INVALID');
             }
-            echo "<pre>";
-            var_dump($request);
-            var_dump($request->variable('andreask_giphyforphpbb_dev_key', 0));
-            echo "</pre>";
-            // $config_text->set('andreask_giphyforphpbb_dev_key', $request->variable('andreask_giphyforphpbb_dev_key', 0));
-            // trigger_error($language->lang('CONFIG_UPDATED') . adm_back_link($this->u_action));
+
+            if ($request->variable('andreask_giphyforphpbb_dev_key', '') === '')
+            {
+                trigger_error($language->lang('EMPTY_INPUT_NOT_ALLOWED') . adm_back_link($this->u_action), E_USER_WARNING);
+            }
+            $config_text->set('andreask_giphyforphpbb_dev_key', $request->variable('andreask_giphyforphpbb_dev_key', ''));
+            trigger_error($language->lang('CONFIG_UPDATED') . adm_back_link($this->u_action));
         }
 
         $template->assign_vars([

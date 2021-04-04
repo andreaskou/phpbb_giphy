@@ -60,37 +60,41 @@ $(document).ready(function(){
         }, 1000);
     });
 
-    // $(".giphy_btn_wrapper")
-    // .filter(function(){
-    //     return $(this).find("div:visible").length == 0;
-    // }).hide();
-
     function renderImg(images)
     {
-        // var wrapperDivWidth = document.getElementById("giphy_wrapper").offsetWidth;
-        // console.log(wrapperDivWidth);
-        var giphyResultsDiv = document.getElementById("giphy_results");
-        // if (giphyResultsDiv.hasChildNodes())
-        // {
-        //     alert('I have child(s)');
-        // }
-        giphyResultsDiv.innerHTML = "";
         document.getElementById("giphy_results").innerHTML ="";
 
+        var preview_gif_url = [];
+        // console.log(images);
         for (var i = 0; i < images.data.length; i++)
         {
+            preview_gif_url[i] = images.data[i].images.original.url;
+            // console.log('URL :' + images.data[i].images.original.url);
+            // console.log('Preview url :' + preview_gif_url);
             if (images.meta.status == 200)
-            {   var img = document.createElement("img");
+            {
+                console.log(preview_gif_url);
+                var img = document.createElement("img");
                 img.setAttribute("src", images.data[i].images.fixed_height_small.url);
                 img.setAttribute("alt", images.data[i].title);
                 img.setAttribute("id", images.data[i].id);
                 img.setAttribute("class", "item");
-                img.onclick = function (){
-                    let attach = fetchImages(this.id, true);
-                }
+                img.onclick = function (){let attach = fetchImages(this.id, true)};
+                img.onmouseover = function(){
+                    console.log('<img src="'+ preview_gif_url[i] +'"/>');
+                    $(this).balloon({ position: "top",
+                        html: true,
+                        contents: '<img src="'+ preview_gif_url[i] +'"/>',
+                    });
+                };
+
                 document.getElementById("giphy_results").appendChild(img);
             }
         }
+    }
+
+    function fetchImageUrl(id)
+    {
 
     }
 
