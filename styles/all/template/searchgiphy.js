@@ -70,10 +70,13 @@ $(document).ready(function(){
         {
             preview_gif_url[i] = images.data[i].images.original.url;
             // console.log('URL :' + images.data[i].images.original.url);
-            // console.log('Preview url :' + preview_gif_url);
+            // console.log('Preview url arrey :' + preview_gif_url);
+            console.log('-----------------------------------');
+            console.log('Preview url :' + preview_gif_url[i]);
             if (images.meta.status == 200)
             {
-                console.log(preview_gif_url);
+                console.log(typeof preview_gif_url[i]);
+                // console.log(preview_gif_url);
                 var img = document.createElement("img");
                 img.setAttribute("src", images.data[i].images.fixed_height_small.url);
                 img.setAttribute("alt", images.data[i].title);
@@ -81,10 +84,10 @@ $(document).ready(function(){
                 img.setAttribute("class", "item");
                 img.onclick = function (){let attach = fetchImages(this.id, true)};
                 img.onmouseover = function(){
-                    console.log('<img src="'+ preview_gif_url[i] +'"/>');
+                    // console.log('<img src="'+ preview_gif_url[i] +'"/>');
                     $(this).balloon({ position: "top",
                         html: true,
-                        contents: '<img src="'+ preview_gif_url[i] +'"/>',
+                        contents: '<img src="' + preview_gif_url[i] + '"/>',
                     });
                 };
 
@@ -172,8 +175,8 @@ $(document).ready(function(){
         }
 
         // console.log('This is the url ' + query_url);
-        console.log('This is the offset ' + offset);
-        console.log('This is the results_count ' + results_count);
+        // console.log('This is the offset ' + offset);
+        // console.log('This is the results_count ' + results_count);
         // if (offset = 0)
         // {
         //     var next_button = document.createElement('BTN');
